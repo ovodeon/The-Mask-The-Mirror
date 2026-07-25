@@ -14,13 +14,21 @@
     <meta property="twitter:title" content="The Mask & The Mirror">
     <meta property="twitter:description" content="A diagnostic of the soul. Explore the tension between your core essence and the survival armor built for the modern grid.">
 
+    <!-- GOOGLE ANALYTICS 4 (GA4) -->
+    <!-- Replace G-YOUR-MEASUREMENT-ID below with your actual GA4 Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T3JP93PDQB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-T3JP93PDQB');
+    </script>
+
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
-    <!-- ANALYTICS SCRIPT PLACEHOLDER (e.g., Plausible / Umami) -->
-    <!-- <script defer data-domain="ovodeon.github.io/The-Mask-The-Mirror" src="https://plausible.io/js/script.js"></script> -->
 
     <style>
         :root {
@@ -320,7 +328,6 @@
             <!-- Choice buttons injected by JS -->
         </div>
 
-        <!-- EXPLICIT SUBMIT BUTTON TO PREVENT ACCIDENTAL SELECTION -->
         <button id="btn-submit-choice" class="btn-primary" disabled onclick="confirmChoice()">CONFIRM CHOICE</button>
     </div>
 
@@ -532,20 +539,17 @@
     const screenMirror = document.getElementById('screen-mirror');
     const btnSubmit = document.getElementById('btn-submit-choice');
 
-    // ANALYTICS HOOK FUNCTION
-    function trackEvent(eventName, eventData = {}) {
-        // Plausible / Umami standard custom event hook
-        if (window.plausible) {
-            window.plausible(eventName, { props: eventData });
-        } else if (window.umami) {
-            window.umami.track(eventName, eventData);
+    // GA4 CUSTOM EVENT HOOK FUNCTION
+    function trackEvent(eventName, eventParams = {}) {
+        if (typeof gtag === 'function') {
+            gtag('event', eventName, eventParams);
         }
     }
 
     function startGame() {
         screenLanding.classList.add('hidden');
         screenGame.classList.remove('hidden');
-        trackEvent('Journey_Started');
+        trackEvent('journey_started');
         renderTurn();
     }
 
@@ -563,7 +567,7 @@
         const container = document.getElementById('choices-container');
         container.innerHTML = '';
 
-        turn.choices.forEach((choice, idx) => {
+        turn.choices.forEach((choice) => {
             const btn = document.createElement('button');
             btn.className = 'choice-btn';
             btn.innerText = choice.text;
@@ -590,7 +594,7 @@
         if (choice.a) aScores[choice.a] += weight;
 
         const turn = turns[currentTurnIndex];
-        trackEvent('Turn_Completed', { turnNumber: currentTurnIndex + 1 });
+        trackEvent('turn_completed', { turn_number: currentTurnIndex + 1 });
 
         if (turn.transitionAfter) {
             showTransition(turn.transitionAfter);
@@ -640,7 +644,11 @@
             if (aScores[k] > maxA) { maxA = aScores[k]; dominantArmor = k; }
         }
 
-        trackEvent('Mirror_Reached', { essence: primaryEssence, armor: dominantArmor });
+        // Log final outcome to Google Analytics
+        trackEvent('mirror_synthesis_reached', {
+            essence_archetype: primaryEssence,
+            armor_archetype: dominantArmor
+        });
 
         // --- CONTENT LIBRARIES ---
         const essenceTexts = {
