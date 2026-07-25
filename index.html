@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mask & The Mirror</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #0b0d0e;
+            --bg-card: #121518;
+            --bg-choice: #181c20;
+            --bg-choice-hover: #22272d;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent-gold: #d4a359;
+            --accent-dim: #4a5568;
+            --border-color: #262c32;
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 760px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- LANDING PAGE --- */
+        .landing-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-title);
+            color: var(--accent-gold);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        h1 { font-size: 2.8rem; line-height: 1.2; margin-bottom: 8px; text-align: center; }
+        .subtitle { font-family: var(--font-title); font-size: 1.4rem; color: var(--text-secondary); text-align: center; font-style: italic; margin-bottom: 30px; }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+            margin: 30px 0;
+        }
+
+        .intro-text p { margin-bottom: 18px; color: var(--text-primary); font-size: 1.05rem; }
+
+        .bullet-list { margin: 20px 0 30px 20px; color: var(--text-secondary); }
+        .bullet-list li { margin-bottom: 8px; }
+
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-family: var(--font-title);
+            font-size: 1.25rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border-radius: 2px;
+            margin-top: 30px;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gold);
+            color: var(--bg-main);
+            box-shadow: 0 0 15px rgba(212, 163, 89, 0.2);
+        }
+
+        /* --- GAME TURNS --- */
+        .turn-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .phase-title { color: var(--accent-gold); }
+
+        .scenario-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .scenario-body {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 25px;
+            white-space: pre-line;
+        }
+
+        .scenario-question {
+            font-style: italic;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+        }
+
+        .choices-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .choice-btn {
+            background: var(--bg-choice);
+            border: 1px solid var(--border-color);
+            padding: 18px 20px;
+            color: var(--text-primary);
+            font-size: 0.98rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            line-height: 1.6;
+            border-radius: 2px;
+        }
+
+        .choice-btn:hover {
+            background: var(--bg-choice-hover);
+            border-color: var(--accent-gold);
+            transform: translateX(4px);
+        }
+
+        /* --- TRANSITION SCREEN --- */
+        .transition-card {
+            text-align: center;
+            padding: 60px 30px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+        }
+
+        .transition-text {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 30px;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* --- EVALUATION / MIRROR SCREEN --- */
+        .mirror-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 50px 40px;
+        }
+
+        .mirror-section {
+            margin-bottom: 40px;
+        }
+
+        .mirror-section h3 {
+            font-size: 1.6rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        .callout-box {
+            background: var(--bg-choice);
+            border-left: 3px solid var(--accent-gold);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: var(--text-primary);
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- LANDING PAGE -->
+    <div id="screen-landing" class="landing-card fade-in">
+        <h1>THE MASK & THE MIRROR</h1>
+        <div class="subtitle">A Map of the Unconditioned Mind</div>
+        <div class="divider"></div>
+        
+        <div class="intro-text">
+            <p>Most tests measure the version of you that was built to survive inside a machine. They ask how you work, how you produce, and how you perform for a world that taught you to separate your mind from the Earth, your community, and your own voice.</p>
+            <p><strong>This is not a test. It is a diagnostic of the soul.</strong></p>
+            <p>We are going to ask you to make choices—not based on who you were taught to be, but on how your spirit reacts when stripped of the noise, the hurry, and the hypnosis of the modern grid.</p>
+            <p>By the end, this game will separate:</p>
+            <ul class="bullet-list">
+                <li><strong>The Essence:</strong> Who you were before the world told you who to be</li>
+                <li><strong>The Armor:</strong> The strategies you built to navigate the colonial apparatus</li>
+                <li><strong>The Synthesis:</strong> Where your true power is currently leaking—and how to reclaim it</li>
+            </ul>
+        </div>
+
+        <button class="btn-primary" onclick="startGame()">ENTER THE MIRROR</button>
+    </div>
+
+    <!-- GAME TURN CARD -->
+    <div id="screen-game" class="landing-card hidden">
+        <div class="turn-header">
+            <span id="turn-phase" class="phase-title">PHASE I</span>
+            <span id="turn-count">TURN 1 / 12</span>
+        </div>
+        <div class="divider" style="margin: 10px 0 25px 0;"></div>
+        
+        <h2 id="scenario-title" class="scenario-title">The River</h2>
+        <div id="scenario-body" class="scenario-body">...</div>
+        <div id="scenario-question" class="scenario-question">How does the mind instinctively move?</div>
+
+        <div id="choices-container" class="choices-container">
+            <!-- Buttons injected by JS -->
+        </div>
+    </div>
+
+    <!-- TRANSITION CARD -->
+    <div id="screen-transition" class="landing-card transition-card hidden">
+        <div id="transition-text" class="transition-text">...</div>
+        <button class="btn-primary" onclick="proceedAfterTransition()">CONTINUE THE JOURNEY</button>
+    </div>
+
+    <!-- EVALUATION / MIRROR CARD -->
+    <div id="screen-mirror" class="mirror-card hidden">
+        <h1>THE SYNTHESIS OF THE MIRROR</h1>
+        <div class="subtitle">A Map of Essence, Armor, and Reclaimed Sovereignty</div>
+        <div class="divider"></div>
+
+        <div class="mirror-section">
+            <h3>I. THE UNCONDITIONED ORIENTATION (Core Essence)</h3>
+            <p id="eval-essence-body">...</p>
+        </div>
+
+        <div class="mirror-section">
+            <h3>II. THE COLONIAL ARMOR (Survival Script)</h3>
+            <p id="eval-armor-body">...</p>
+        </div>
+
+        <div class="mirror-section">
+            <h3>III. THE POINT OF FRACTURE (Where Energy Leaks)</h3>
+            <div id="eval-friction-box" class="callout-box">...</div>
+            <p id="eval-friction-body">...</p>
+        </div>
+
+        <div class="mirror-section">
+            <h3>IV. THE PATH OF RECLAMATION</h3>
+            <p id="eval-reclamation-body">...</p>
+        </div>
+
+        <button class="btn-primary" onclick="window.print()">SAVE THIS REFLECTION</button>
+    </div>
+
+</div>
+
+<script>
+    // --- GAME DATA & TURNS ---
+    const turns = [
+        // PHASE I
+        {
+            phase: "PHASE I: THE DISORIENTATION",
+            title: "Turn 1: The River",
+            body: "You stand at the bank of a swollen, swift river. Across it lies the land where your people need to gather, but there is no bridge. Beside you are three others who are equally stranded.\n\nOn the shore lie fallen timbers, heavy stones, and thick vines. Time is passing, and the current is rising...",
+            question: "How does the mind instinctively move?",
+            choices: [
+                { text: "You immediately assess the materials and step forward to delegate tasks. 'If we organize our labor efficiently, we can construct a timber crossing before nightfall.'", e: "BUILDER", a: "OVERSEER" },
+                { text: "You sit quietly by the water's edge, observing the pulse of the river and the timber. You wait for a shared understanding to emerge among the group before making a move.", e: "WEAVER", a: null },
+                { text: "You test the water alone, measuring your own weight against the current. If the others cannot keep up, you prepare to cross first and secure a rope from the far bank.", e: "WAYFINDER", a: "INSULATION" },
+                { text: "You look beyond the immediate crossing, studying the landscape upstream to see why the river has swollen so suddenly, seeking to understand the root cause.", e: "ALCHEMIST", a: null }
+            ]
+        },
+        {
+            phase: "PHASE I: THE DISORIENTATION",
+            title: "Turn 2: The Tribunal",
+            body: "You are brought into a sterile, high-walled chamber. Officials sit elevated above you, demanding a precise, quantifiable accounting of your path, your time, and your output.\n\nThey do not ask what you felt, what you dreamed, or who you nurtured... They ask only for proof of your utility to the collective apparatus.",
+            question: "How does the internal armor react?",
+            choices: [
+                { text: "You speak their language fluently, presenting your records with razor-sharp precision—using their own rules to excel and protect yourself from scrutiny.", e: null, a: "RATIONAL" },
+                { text: "A cold silence falls over you. You answer with minimal words, withholding your true essence, knowing that to give them your depth is to allow them to quantify it.", e: null, a: "EXILE" },
+                { text: "You feel an incandescent friction inside. You openly challenge the premise of their accounting, pointing out the absurdity and violence of reducing life to metrics.", e: "WAYFINDER", a: null },
+                { text: "You feel an overwhelming exhaustion—a subtle guilt that perhaps you haven't produced enough, wondering if you are failing to meet the standard expected of you.", e: null, a: "OVERSEER" }
+            ]
+        },
+        {
+            phase: "PHASE I: THE DISORIENTATION",
+            title: "Turn 3: The Commons",
+            body: "A shared harvest or resource has been brought into the village square. There is enough for everyone for the season, but rumors spread that the coming winter will be harsh and unpredictable.\n\nUncertainty hangs heavy in the air...",
+            question: "What is the quiet whisper in the back of the mind?",
+            choices: [
+                { text: "'I must secure my portion and my household's share immediately, storing it safely where it cannot be taken or wasted.'", e: null, a: "INSULATION" },
+                { text: "'We must establish a council right now to inventory, ration, and distribute this equally based on need, ensuring no single person hoards.'", e: "WEAVER", a: null },
+                { text: "'I will take less than my share and teach others how to forage and preserve in the wild so we are not reliant solely on what sits in this square.'", e: "WAYFINDER", a: null },
+                { text: "'I feel the anxiety of the crowd more than the threat of the winter. If we panic, we destroy ourselves long before the cold arrives.'", e: "WEAVER", a: null }
+            ],
+            transitionAfter: "You have shown how you move in the open.\n\nNow, let us see how you adapted when the fences were built and the artificial clocks began to tick..."
+        },
+        // PHASE II
+        {
+            phase: "PHASE II: THE IMPERIAL GRID",
+            title: "Turn 4: The Boundary",
+            body: "You walk across a stretch of wild, ancient ground that has just been enclosed by wooden stakes and written notices. Someone has claimed exclusive ownership of the earth, the water, and the trees where everyone used to walk freely.",
+            question: "As your feet touch the soil inside the boundary line, what does the mind register first?",
+            choices: [
+                { text: "A flash of quiet anger... not just at the fence, but at the realization that we have been convinced we can own the very breath that sustains us.", e: "WEAVER", a: null },
+                { text: "An immediate mental calculation of what it will cost to buy or secure a piece of this earth for yourself, so you are never left vulnerable to someone else's gate.", e: null, a: "INSULATION" },
+                { text: "Curiosity about who drew the line and why. You want to trace the legal or systemic origins of this enclosure to see how the fiction was codified.", e: "ALCHEMIST", a: null },
+                { text: "A heavy sigh of resignation... feeling that this is simply how the world works now, and that resisting it is an exhausting, impossible battle.", e: null, a: "EXILE" }
+            ]
+        },
+        {
+            phase: "PHASE II: THE IMPERIAL GRID",
+            title: "Turn 5: The Clock",
+            body: "You are given an artificial schedule... divided into exact, unyielding blocks of minutes and hours. You are told that every moment must be accounted for, optimized, and traded for security. Outside the window, the sun moves, seasons shift, and the body speaks its own silent rhythm.",
+            question: "How does your internal pulse respond to this rigid structure?",
+            choices: [
+                { text: "You master the grid... turning your days into a precision instrument, taking pride in efficiency while feeling a quiet, underlying alienation from your body.", e: null, a: "RATIONAL" },
+                { text: "You suffer under its weight... constantly feeling behind, burdened by a chronic guilt that you are never doing enough, no matter how much energy you expend.", e: null, a: "OVERSEER" },
+                { text: "You quietly sabotage the schedule... maintaining an internal sanctuary where time remains fluid, doing only what is required to pass through unnoticed.", e: null, a: "EXILE" },
+                { text: "You reject the premises entirely... orienting your work around energy, relationship, and completion rather than arbitrary ticks on a dial.", e: "WEAVER", a: null }
+            ]
+        },
+        {
+            phase: "PHASE II: THE IMPERIAL GRID",
+            title: "Turn 6: The Language",
+            body: "You are asked to explain a profound grief, a deep spiritual knowing, or a subtle shift in the community using only the cold, precise jargon of data, statistics, and economic efficiency.\n\nThe system demands proof that can be measured on paper...",
+            question: "What happens inside when forced to translate the sacred into the measurable?",
+            choices: [
+                { text: "You adapt effortlessly... translating the subtle into arguments the system cannot easily reject, using their own logic to protect what matters.", e: null, a: "RATIONAL" },
+                { text: "You refuse the dialect... speaking in metaphor, feeling, and bodily truth, accepting that the system will likely brand you as irrational or impractical.", e: "WAYFINDER", a: null },
+                { text: "You experience a profound numbness... feeling the inadequacy of words, slowly doubting whether your intuition was real in the first place if it cannot be proven.", e: null, a: "EXILE" },
+                { text: "You analyze the language itself... deconstructing how the terminology was designed to exclude human feeling and strip power from relational truth.", e: "ALCHEMIST", a: null }
+            ],
+            transitionAfter: "We leave the grid behind.\n\nWe step into the quiet place where you carry your armor... and where your energy leaks."
+        },
+        // PHASE III
+        {
+            phase: "PHASE III: THE SHADOW & THE ARMOR",
+            title: "Turn 7: The Scapegoat",
+            body: "In a group you belong to, an uncomfortable truth becomes obvious... but pointing it out will disrupt the harmony, anger those in authority, and risk your standing. The group has chosen to blame an innocent outsider to maintain their own comfort.\n\nThe silence in the room grows heavy...",
+            question: "What posture does your spirit assume?",
+            choices: [
+                { text: "You step into the center of the room and name the lie directly, accepting whatever exile or backlash comes with breaking the illusion.", e: "WAYFINDER", a: null },
+                { text: "You stay quiet in the moment to assess the politics, then pull key individuals aside privately to dismantle the lie without causing a public explosion.", e: "ALCHEMIST", a: null },
+                { text: "You feel an intense physical discomfort, but you stay silent... choosing safety and group inclusion over the friction of speaking out.", e: null, a: "OVERSEER" },
+                { text: "You physically remove yourself from the group... refusing to participate in the charade, preferring solitude over corrupted belonging.", e: null, a: "INSULATION" }
+            ]
+        },
+        {
+            phase: "PHASE III: THE SHADOW & THE ARMOR",
+            title: "Turn 8: The Inheritance",
+            body: "You stand before an old, ironbound chest left to you by those who came before. Inside lies both a burden—unspoken grief, survival fear, and old vows of silence—and an ancient, unpolished power that was forgotten.\n\nTo open the chest is to take ownership of both...",
+            question: "How do you approach the inheritance?",
+            choices: [
+                { text: "You open it wide, taking time to sort through every artifact—naming the wounds so they stop bleeding through you, and claiming the power as your birthright.", e: "ALCHEMIST", a: null },
+                { text: "You hesitate... feeling that the past should remain buried, afraid that looking too closely at old wounds will dismantle the stability you have worked so hard to build.", e: null, a: "EXILE" },
+                { text: "You take only the power and tools that seem useful for today, leaving the grief and heavy emotional memory untouched in the dark.", e: null, a: "RATIONAL" },
+                { text: "You feel overwhelmed by the weight of what was carried before you, suspecting that your life is largely a continuation of debts and stories you did not write.", e: null, a: "OVERSEER" }
+            ]
+        },
+        {
+            phase: "PHASE III: THE SHADOW & THE ARMOR",
+            title: "Turn 9: The Sanctuary",
+            body: "When the world becomes violent, chaotic, or overwhelming... when the demands of the modern grid exhaust your capacity to engage... where does the consciousness run to hide?",
+            question: "What is your true sanctuary under pressure?",
+            choices: [
+                { text: "The Mind: You retreat into intense analysis, research, and conceptualization... turning reality into a problem to be solved rather than felt.", e: null, a: "RATIONAL" },
+                { text: "The Fortress: You close the doors, isolate yourself entirely, and reduce your world to what you can personally control and predict.", e: null, a: "INSULATION" },
+                { text: "The Forge: You bury yourself in work, creation, and endless tasks... staying busy so the silence doesn't have a chance to speak.", e: null, a: "OVERSEER" },
+                { text: "The Flow: You seek communion with nature, music, or altered states... dissolving your sense of self so you no longer have to carry the weight of being a person.", e: "WAYFINDER", a: "EXILE" }
+            ],
+            transitionAfter: "The armor has served its purpose. It kept you alive.\n\nNow... what remains when you stop holding up the shield?"
+        },
+        // PHASE IV
+        {
+            phase: "PHASE IV: THE RECLAMATION",
+            title: "Turn 10: The Crucible",
+            body: "You reach a moment where you must commit to a path, but all the external safety nets have been removed. There are no guarantees of success, no approval from authority, and no path back to who you were before.\n\nYou are standing in absolute stillness...",
+            question: "What moves you forward into the dark?",
+            choices: [
+                { text: "The quiet, internal conviction that remaining where you are is a slow death... you step into the dark simply because movement is life.", e: "WAYFINDER", a: null },
+                { text: "The thought of those who come after you... knowing that your willingness to step forward clears a path for others to follow.", e: "WEAVER", a: null },
+                { text: "You wait for a sign, a synchronicity, or a shift in the wind... trusting that the path will construct itself under your feet as you step.", e: "WEAVER", a: null },
+                { text: "You create a detailed contingency plan for the worst-case scenario, taking the step only when you know how you will survive if everything collapses.", e: "BUILDER", a: "RATIONAL" }
+            ]
+        },
+        {
+            phase: "PHASE IV: THE RECLAMATION",
+            title: "Turn 11: The Offering",
+            body: "You are offered immense personal success, wealth, or influence... but the terms are clear: you must continue to feed a system that extracts from the earth, exploits others, and requires you to keep wearing the mask.\n\nThe world tells you this is the ultimate goal...",
+            question: "How does your inner spirit handle the offer?",
+            choices: [
+                { text: "You accept the offer with the deliberate intention of acting as a trojan horse... taking the power and resources to quietly divert them to the margins.", e: "ALCHEMIST", a: null },
+                { text: "You refuse outright... recognizing that you cannot use the master's tools to dismantle the master's house, preferring simplicity over corrupted power.", e: "WAYFINDER", a: null },
+                { text: "You negotiate... trying to find a middle ground where you can accept the security while minimizing the harm you cause to your values.", e: null, a: "OVERSEER" },
+                { text: "You feel torn by the offer... realizing how much of your life has been shaped by the desire for security, making it painful to turn away from the prize.", e: null, a: "INSULATION" }
+            ]
+        },
+        {
+            phase: "PHASE IV: THE RECLAMATION",
+            title: "Turn 12: The Unbounded Mirror",
+            body: "We reach the final turn. The scenarios dissolve. The river, the tribunal, the commons, and the clocks fade away.\n\nYou stand alone before a clear, dark mirror that reflects not your face, your name, or your history, but the raw, unconditioned impulse of your soul across time.",
+            question: "When all the masks, armors, and survival strategies fall to the floor... what is left standing?",
+            choices: [
+                { text: "A Fire that seeks to transform, burn away falsehood, and birth new forms out of the ashes.", e: "ALCHEMIST", a: null, weight: 2 },
+                { text: "A Thread that seeks to connect, weave community, restore harmony, and hold the collective together.", e: "WEAVER", a: null, weight: 2 },
+                { text: "A Stone that stands as a foundation, building lasting structures, holding sacred boundary, and offering shelter.", e: "BUILDER", a: null, weight: 2 },
+                { text: "A Wind that breaks boundaries, moves into the unknown, charts new horizons, and refuses to be contained.", e: "WAYFINDER", a: null, weight: 2 }
+            ]
+        }
+    ];
+
+    // --- STATE ENGINE ---
+    let currentTurnIndex = 0;
+    
+    const eScores = { WEAVER: 0, ALCHEMIST: 0, BUILDER: 0, WAYFINDER: 0 };
+    const aScores = { RATIONAL: 0, OVERSEER: 0, INSULATION: 0, EXILE: 0 };
+
+    // --- DOM ELEMENTS ---
+    const screenLanding = document.getElementById('screen-landing');
+    const screenGame = document.getElementById('screen-game');
+    const screenTransition = document.getElementById('screen-transition');
+    const screenMirror = document.getElementById('screen-mirror');
+
+    function startGame() {
+        screenLanding.classList.add('hidden');
+        screenGame.classList.remove('hidden');
+        renderTurn();
+    }
+
+    function renderTurn() {
+        const turn = turns[currentTurnIndex];
+        
+        document.getElementById('turn-phase').innerText = turn.phase;
+        document.getElementById('turn-count').innerText = `TURN ${currentTurnIndex + 1} / 12`;
+        document.getElementById('scenario-title').innerText = turn.title.split(': ')[1];
+        document.getElementById('scenario-body').innerText = turn.body;
+        document.getElementById('scenario-question').innerText = turn.question;
+
+        const container = document.getElementById('choices-container');
+        container.innerHTML = '';
+
+        turn.choices.forEach((choice) => {
+            const btn = document.createElement('button');
+            btn.className = 'choice-btn';
+            btn.innerText = choice.text;
+            btn.onclick = () => selectChoice(choice);
+            container.appendChild(btn);
+        });
+    }
+
+    function selectChoice(choice) {
+        const weight = choice.weight || 1;
+        if (choice.e) eScores[choice.e] += weight;
+        if (choice.a) aScores[choice.a] += weight;
+
+        const turn = turns[currentTurnIndex];
+
+        if (turn.transitionAfter) {
+            showTransition(turn.transitionAfter);
+        } else {
+            advanceTurn();
+        }
+    }
+
+    function showTransition(text) {
+        screenGame.classList.add('hidden');
+        screenTransition.classList.remove('hidden');
+        document.getElementById('transition-text').innerText = text;
+    }
+
+    function proceedAfterTransition() {
+        screenTransition.classList.add('hidden');
+        advanceTurn();
+    }
+
+    function advanceTurn() {
+        currentTurnIndex++;
+        if (currentTurnIndex < turns.length) {
+            screenGame.classList.remove('hidden');
+            renderTurn();
+        } else {
+            renderMirror();
+        }
+    }
+
+    // --- EVALUATION COMPOSITION ENGINE ---
+    function renderMirror() {
+        screenGame.classList.add('hidden');
+        screenTransition.classList.add('hidden');
+        screenMirror.classList.remove('hidden');
+
+        // Determine Highest Essence
+        let primaryEssence = 'WEAVER';
+        let maxE = -1;
+        for (let k in eScores) {
+            if (eScores[k] > maxE) { maxE = eScores[k]; primaryEssence = k; }
+        }
+
+        // Determine Highest Armor
+        let dominantArmor = 'RATIONAL';
+        let maxA = -1;
+        for (let k in aScores) {
+            if (aScores[k] > maxA) { maxA = aScores[k]; dominantArmor = k; }
+        }
+
+        // --- CONTENT LIBRARIES ---
+        const essenceTexts = {
+            WEAVER: "Your primary orientation is that of THE WEAVER. Left unconditioned by hyper-individualist frameworks, your mind does not naturally perceive the world as a series of isolated objects to be categorized, owned, or exploited. Instead, you operate through relational coherence... instinctively looking for how elements connect, how power flows through a system, and where collective integrity has been broken. You are drawn to depth, resonance, and structural truth.",
+            ALCHEMIST: "Your primary orientation is that of THE ALCHEMIST. Left unconditioned by surface appearances, your mind instinctively looks beneath the noise to perceive the underlying mechanics, power dynamics, and invisible forces shaping reality. You are drawn to the root causes of systemic decay and growth. Where the modern grid demands fast, shallow answers, your nature demands structural truth and fundamental transformation.",
+            BUILDER: "Your primary orientation is that of THE BUILDER. Left unconditioned by extractivist logic, your mind is oriented around sacred order, physical reality, and tangible stewardship. Your intelligence moves naturally toward giving abstract ideas a concrete, durable body. You value patience, long-term integrity, and building sanctuaries that offer true shelter.",
+            WAYFINDER: "Your primary orientation is that of THE WAYFINDER. Left unconditioned by rigid boundaries and surveillance, your mind embodies raw movement, horizon sensing, and sovereign exploration. You possess an instinctual compass that senses when a paradigm has become stagnant and where new paths are opening through the dark."
+        };
+
+        const armorTexts = {
+            RATIONAL: "Your primary defense has manifested as TACTICAL RATIONALISM (The Shield of Logic). When confronted by systems that attempt to quantify or diminish your spirit, you learned to master the dialect of authority—using razor-sharp logic, metrics, and conceptual analysis to protect your intuitive depth from scrutiny.",
+            OVERSEER: "Your primary defense has manifested as THE INTERNALIZED OVERSEER (The Productivity Trap). Inside a culture that equates worth with labor output, you internalized the voice of the machine—monitoring your own time ruthlessly and staying busy as a strategy to outrun vulnerability and systemic scrutiny.",
+            INSULATION: "Your primary defense has manifested as HYPER-AUTONOMOUS INSULATION (The Lone Citadel). In response to atomized, hyper-individualist structures where communal safety nets were dismantled, you built an absolute boundary around yourself—relying solely on your own capacity and guarding against dependency.",
+            EXILE: "Your primary defense has manifested as PROTECTIVE EXILE (The Guerrilla Sanctuary). When direct confrontation with authority carried a high penalty, you chose to operate like a ghost inside the apparatus—offering minimum compliance while holding your truest essence safely hidden in the dark."
+        };
+
+        const frictionMatrix = {
+            WEAVER: {
+                RATIONAL: { title: "THE HEAD & THE HEART", text: "You carry a deep relational need for collective harmony, but your rational armor demands bulletproof proof before allowing you to trust others. You experience fatigue from endlessly analyzing the relationships you simply wish to feel." },
+                OVERSEER: { title: "THE EXHAUSTED ANCHOR", text: "Your relational nature wants to hold the collective space together, but your productivity conditioning forces you to do it through continuous, self-sacrificing labor. You feel exhausted from carrying everyone's world." },
+                INSULATION: { title: "THE FRAGMENTED HEART", text: "You desperately long for deep, authentic community, but your hyper-autonomous shield keeps everyone at arm's length. You suffer from a quiet loneliness inside rooms full of people." },
+                EXILE: { title: "THE SILENT DWELLER", text: "You feel the subtle emotional shifts of the collective deeply, but your protective exile keeps you from speaking your truth aloud. You hold immense communal wisdom in absolute secret." }
+            },
+            ALCHEMIST: {
+                RATIONAL: { title: "THE CYNICAL OBSERVER", text: "You diagnose every systemic flaw and power dynamic with razor-sharp clarity, but your need for intellectual proof paralyzes you from taking creative action to change what you see." },
+                OVERSEER: { title: "THE BUSY DIAGNOSTRICIAN", text: "You spend immense energy trying to fix or optimize broken systems around you, confusing endless work with true structural transformation." },
+                INSULATION: { title: "THE ISOLATED PROPHET", text: "You see the root causes of the culture's illness clearly, but because you refuse to rely on anyone else, you carry the heavy burden of that vision completely alone." },
+                EXILE: { title: "THE UNDERGROUND DECONSTRUCTOR", text: "You understand exactly how the master's house was built, but you keep your knowledge safely hidden in internal sanctuaries where it cannot disrupt the status quo." }
+            },
+            BUILDER: {
+                RATIONAL: { title: "THE FROZEN CRAFTSMAN", text: "You have a natural gift for creating durable, sacred structures, but your need for absolute logical guarantees before laying down a stone leads to creative paralysis." },
+                OVERSEER: { title: "THE GRINDING OX", text: "Your natural joy of physical creation and stewardship has been weaponized into endless, joyless productivity for a system that extracts your life force." },
+                INSULATION: { title: "THE FORTRESS BUILDER", text: "You pour your creative energy solely into building personal security and walls, missing out on the power of building communal foundations." },
+                EXILE: { title: "THE HIDDEN WORKER", text: "You build beautiful internal or private worlds, but withhold your tangible creations from a world that desperately needs grounded sanctuaries." }
+            },
+            WAYFINDER: {
+                RATIONAL: { title: "THE CAGED EXPLORER", text: "Your soul demands raw movement and new horizons, but your mind demands a risk-free blueprint before making a move... keeping you trapped in endless planning." },
+                OVERSEER: { title: "THE RESTLESS RUNNER", text: "You attempt to outrun the pressure of the machine by constantly moving, taking on new projects, or changing locations without ever stopping to ground your power." },
+                INSULATION: { title: "THE ISOLATED NOMAD", text: "You break boundaries with ease, but refuse to let anyone travel beside you, mistaking complete isolation for true freedom." },
+                EXILE: { title: "THE TRAPPED BIRD", text: "You feel intensely suffocated inside modern schedules and structures, manifesting as chronic internal restlessness while outwardly going through the motions." }
+            }
+        };
+
+        const reclamationTexts = {
+            WEAVER: "1. Shift from 'holding everyone' to 'building reciprocal containers.'\n2. Reclaim trust in non-verbal, relational intelligence without asking for permission.\n3. Recognize that setting clear boundaries is an act of love, not abandonment.",
+            ALCHEMIST: "1. Move from 'diagnosing the illness' to 'building the alternative.'\n2. Allow yourself to feel the emotional truth of a system, not just analyze it.\n3. Share your deep structural insight with peers who are ready to listen.",
+            BUILDER: "1. Reclaim your timing from artificial schedules; honor organic seasons.\n2. Separate your human worth from your physical labor and output.\n3. Direct your creative capacity toward sacred, lasting communal stewardship.",
+            WAYFINDER: "1. Trust your gut intuition without requiring a bulletproof roadmap.\n2. Recognize that committing to a place or community is not a loss of freedom, but a deepening of power.\n3. Step into the dark with the confidence that the path forms beneath your feet."
+        };
+
+        const frictionInfo = frictionMatrix[primaryEssence][dominantArmor];
+
+        document.getElementById('eval-essence-body').innerText = essenceTexts[primaryEssence];
+        document.getElementById('eval-armor-body').innerText = armorTexts[dominantArmor];
+        document.getElementById('eval-friction-box').innerText = `Friction Point: ${frictionInfo.title}`;
+        document.getElementById('eval-friction-body').innerText = frictionInfo.text;
+        document.getElementById('eval-reclamation-body').innerText = reclamationTexts[primaryEssence];
+    }
+</script>
+
+</body>
+</html>
