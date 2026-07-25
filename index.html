@@ -3,21 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Mask & The Mirror</title>
+    <title>The Mask & The Mirror — A Map of the Unconditioned Mind</title>
+
+    <!-- OPEN GRAPH / SOCIAL PREVIEW META TAGS -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ovodeon.github.io/The-Mask-The-Mirror/">
+    <meta property="og:title" content="The Mask & The Mirror">
+    <meta property="og:description" content="A diagnostic of the soul. Explore the tension between your core essence and the survival armor built for the modern grid.">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="The Mask & The Mirror">
+    <meta property="twitter:description" content="A diagnostic of the soul. Explore the tension between your core essence and the survival armor built for the modern grid.">
+
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- ANALYTICS SCRIPT PLACEHOLDER (e.g., Plausible / Umami) -->
+    <!-- <script defer data-domain="ovodeon.github.io/The-Mask-The-Mirror" src="https://plausible.io/js/script.js"></script> -->
+
     <style>
         :root {
-            --bg-main: #0b0d0e;
-            --bg-card: #121518;
-            --bg-choice: #181c20;
-            --bg-choice-hover: #22272d;
+            --bg-main: #090b0c;
+            --bg-card: #111417;
+            --bg-choice: #161a1e;
+            --bg-choice-hover: #1e242a;
+            --bg-choice-selected: #242a32;
             --text-primary: #e2e8f0;
             --text-secondary: #94a3b8;
             --accent-gold: #d4a359;
-            --accent-dim: #4a5568;
-            --border-color: #262c32;
+            --accent-gold-dim: #8c6835;
+            --border-color: #22272e;
             --font-title: 'Cormorant Garamond', serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -39,12 +55,35 @@
             align-items: center;
             padding: 20px;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ATMOSPHERIC BACKGROUND AMBIENCE */
+        body::before {
+            content: "";
+            position: fixed;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle at 50% 30%, rgba(214, 163, 89, 0.03) 0%, transparent 60%),
+                        radial-gradient(circle at 20% 80%, rgba(38, 44, 50, 0.15) 0%, transparent 50%);
+            z-index: -1;
+            animation: pulseAmbient 14s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes pulseAmbient {
+            0% { opacity: 0.6; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
         }
 
         .container {
             max-width: 760px;
             width: 100%;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .fade-in {
@@ -56,13 +95,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- LANDING PAGE --- */
+        /* CARDS & TYPOGRAPHY */
         .landing-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             padding: 40px;
             border-radius: 4px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
         h1, h2, h3 {
@@ -82,10 +121,10 @@
         }
 
         .intro-text p { margin-bottom: 18px; color: var(--text-primary); font-size: 1.05rem; }
-
         .bullet-list { margin: 20px 0 30px 20px; color: var(--text-secondary); }
         .bullet-list li { margin-bottom: 8px; }
 
+        /* BUTTONS */
         .btn-primary {
             display: block;
             width: 100%;
@@ -95,7 +134,7 @@
             color: var(--accent-gold);
             font-family: var(--font-title);
             font-size: 1.25rem;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
@@ -103,13 +142,20 @@
             margin-top: 30px;
         }
 
-        .btn-primary:hover {
+        .btn-primary:hover:not(:disabled) {
             background: var(--accent-gold);
             color: var(--bg-main);
-            box-shadow: 0 0 15px rgba(212, 163, 89, 0.2);
+            box-shadow: 0 0 20px rgba(212, 163, 89, 0.25);
         }
 
-        /* --- GAME TURNS --- */
+        .btn-primary:disabled {
+            border-color: var(--border-color);
+            color: var(--text-secondary);
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        /* TURN STRUCTURE */
         .turn-header {
             display: flex;
             justify-content: space-between;
@@ -148,6 +194,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            margin-bottom: 10px;
         }
 
         .choice-btn {
@@ -161,15 +208,31 @@
             transition: all 0.2s ease;
             line-height: 1.6;
             border-radius: 2px;
+            position: relative;
         }
 
         .choice-btn:hover {
             background: var(--bg-choice-hover);
-            border-color: var(--accent-gold);
-            transform: translateX(4px);
+            border-color: var(--accent-gold-dim);
         }
 
-        /* --- TRANSITION SCREEN --- */
+        .choice-btn.selected {
+            background: var(--bg-choice-selected);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(212, 163, 89, 0.15);
+        }
+
+        .choice-btn.selected::before {
+            content: "•";
+            position: absolute;
+            left: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+
+        /* TRANSITION CARD */
         .transition-card {
             text-align: center;
             padding: 60px 30px;
@@ -186,7 +249,7 @@
             line-height: 1.4;
         }
 
-        /* --- EVALUATION / MIRROR SCREEN --- */
+        /* EVALUATION / MIRROR SCREEN */
         .mirror-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -254,8 +317,11 @@
         <div id="scenario-question" class="scenario-question">How does the mind instinctively move?</div>
 
         <div id="choices-container" class="choices-container">
-            <!-- Buttons injected by JS -->
+            <!-- Choice buttons injected by JS -->
         </div>
+
+        <!-- EXPLICIT SUBMIT BUTTON TO PREVENT ACCIDENTAL SELECTION -->
+        <button id="btn-submit-choice" class="btn-primary" disabled onclick="confirmChoice()">CONFIRM CHOICE</button>
     </div>
 
     <!-- TRANSITION CARD -->
@@ -454,6 +520,7 @@
 
     // --- STATE ENGINE ---
     let currentTurnIndex = 0;
+    let selectedChoiceRef = null;
     
     const eScores = { WEAVER: 0, ALCHEMIST: 0, BUILDER: 0, WAYFINDER: 0 };
     const aScores = { RATIONAL: 0, OVERSEER: 0, INSULATION: 0, EXILE: 0 };
@@ -463,15 +530,29 @@
     const screenGame = document.getElementById('screen-game');
     const screenTransition = document.getElementById('screen-transition');
     const screenMirror = document.getElementById('screen-mirror');
+    const btnSubmit = document.getElementById('btn-submit-choice');
+
+    // ANALYTICS HOOK FUNCTION
+    function trackEvent(eventName, eventData = {}) {
+        // Plausible / Umami standard custom event hook
+        if (window.plausible) {
+            window.plausible(eventName, { props: eventData });
+        } else if (window.umami) {
+            window.umami.track(eventName, eventData);
+        }
+    }
 
     function startGame() {
         screenLanding.classList.add('hidden');
         screenGame.classList.remove('hidden');
+        trackEvent('Journey_Started');
         renderTurn();
     }
 
     function renderTurn() {
         const turn = turns[currentTurnIndex];
+        selectedChoiceRef = null;
+        btnSubmit.disabled = true;
         
         document.getElementById('turn-phase').innerText = turn.phase;
         document.getElementById('turn-count').innerText = `TURN ${currentTurnIndex + 1} / 12`;
@@ -482,21 +563,34 @@
         const container = document.getElementById('choices-container');
         container.innerHTML = '';
 
-        turn.choices.forEach((choice) => {
+        turn.choices.forEach((choice, idx) => {
             const btn = document.createElement('button');
             btn.className = 'choice-btn';
             btn.innerText = choice.text;
-            btn.onclick = () => selectChoice(choice);
+            btn.onclick = () => highlightChoice(btn, choice);
             container.appendChild(btn);
         });
     }
 
-    function selectChoice(choice) {
+    function highlightChoice(buttonElement, choice) {
+        const buttons = document.querySelectorAll('.choice-btn');
+        buttons.forEach(b => b.classList.remove('selected'));
+        
+        buttonElement.classList.add('selected');
+        selectedChoiceRef = choice;
+        btnSubmit.disabled = false;
+    }
+
+    function confirmChoice() {
+        if (!selectedChoiceRef) return;
+
+        const choice = selectedChoiceRef;
         const weight = choice.weight || 1;
         if (choice.e) eScores[choice.e] += weight;
         if (choice.a) aScores[choice.a] += weight;
 
         const turn = turns[currentTurnIndex];
+        trackEvent('Turn_Completed', { turnNumber: currentTurnIndex + 1 });
 
         if (turn.transitionAfter) {
             showTransition(turn.transitionAfter);
@@ -545,6 +639,8 @@
         for (let k in aScores) {
             if (aScores[k] > maxA) { maxA = aScores[k]; dominantArmor = k; }
         }
+
+        trackEvent('Mirror_Reached', { essence: primaryEssence, armor: dominantArmor });
 
         // --- CONTENT LIBRARIES ---
         const essenceTexts = {
