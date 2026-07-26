@@ -9,19 +9,17 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ovodeon.github.io/The-Mask-The-Mirror/">
     <meta property="og:title" content="The Mask & The Mirror">
-    <meta property="og:description" content="A diagnostic of the soul. Explore the tension between your core essence and the survival armor built for the modern grid.">
+    <meta property="og:description" content="A diagnostic of the soul. Explore the tension between your core essence, survival armor, and resonant celestial element.">
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="The Mask & The Mirror">
-    <meta property="twitter:description" content="A diagnostic of the soul. Explore the tension between your core essence and the survival armor built for the modern grid.">
+    <meta property="twitter:description" content="A diagnostic of the soul. Explore the tension between your core essence, survival armor, and resonant celestial element.">
 
     <!-- GOOGLE ANALYTICS 4 (GA4) -->
-    <!-- Replace G-YOUR-MEASUREMENT-ID below with your actual GA4 Measurement ID -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T3JP93PDQB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-T3JP93PDQB');
     </script>
 
@@ -48,7 +46,6 @@
             --font-serif: 'Cormorant Garamond', serif;
             --font-body: 'Inter', sans-serif;
             
-            /* DYNAMIC PHASE GRADIENTS */
             --phase-bg: radial-gradient(circle at 50% 30%, rgba(223, 177, 91, 0.05) 0%, transparent 70%);
         }
 
@@ -73,7 +70,6 @@
             transition: background 1.5s ease;
         }
 
-        /* AMBIENT CANVAS & BACKGROUND OVERLAY */
         #particle-canvas {
             position: fixed;
             top: 0;
@@ -104,7 +100,6 @@
             z-index: 1;
         }
 
-        /* FADE ANIMATIONS */
         .fade-in {
             animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -114,7 +109,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* CARDS & TYPOGRAPHY */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -161,7 +155,6 @@
         .intro-text p {
             margin-bottom: 22px;
             color: var(--text-primary);
-            font-size: 1.08rem;
             font-family: var(--font-serif);
             font-size: 1.25rem;
             line-height: 1.8;
@@ -176,7 +169,6 @@
 
         .bullet-list li { margin-bottom: 12px; }
 
-        /* THRESHOLD EMBLEM / PORTAL */
         .portal-emblem {
             width: 80px;
             height: 80px;
@@ -213,7 +205,6 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* BUTTONS */
         .btn-primary {
             display: block;
             width: 100%;
@@ -247,7 +238,6 @@
             cursor: not-allowed;
         }
 
-        /* TURN STRUCTURE */
         .turn-header {
             display: flex;
             justify-content: space-between;
@@ -330,7 +320,6 @@
             font-size: 0.8rem;
         }
 
-        /* TRANSITION CARD */
         .transition-card {
             text-align: center;
             padding: 70px 40px;
@@ -345,14 +334,93 @@
             line-height: 1.6;
         }
 
-        /* EVALUATION / MIRROR SCREEN */
-        .mirror-card {
-            padding: 60px 50px;
+        /* PROCESSING / RITUAL SCREEN STYLES */
+        .processing-card {
+            text-align: center;
+            padding: 80px 40px;
         }
 
-        .mirror-chapter {
-            margin-bottom: 50px;
+        .processing-sigil {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 35px auto;
+            border: 1px solid var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 0 30px var(--accent-glow);
+            animation: pulseGlow 2s ease-in-out infinite alternate;
         }
+
+        .processing-sigil-symbol {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+        }
+
+        @keyframes pulseGlow {
+            from { box-shadow: 0 0 15px var(--accent-glow); transform: scale(0.98); }
+            to { box-shadow: 0 0 45px rgba(223, 177, 91, 0.4); transform: scale(1.05); }
+        }
+
+        .processing-text {
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            color: var(--accent-gold);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .processing-subtext {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* MIRROR & ZODIAC SYMBOL STYLES */
+        .mirror-card { padding: 60px 50px; }
+
+        .zodiac-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0 35px 0;
+            padding: 18px;
+            background: var(--bg-choice);
+            border: 1px solid var(--border-color);
+            border-radius: 2px;
+        }
+
+        .zodiac-glyph {
+            font-size: 2.8rem;
+            color: var(--accent-gold);
+            line-height: 1;
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .zodiac-info {
+            text-align: left;
+        }
+
+        .zodiac-name {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+        }
+
+        .zodiac-meta {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .mirror-chapter { margin-bottom: 50px; }
 
         .mirror-chapter h3 {
             font-size: 1.3rem;
@@ -448,6 +516,7 @@
             <ul class="bullet-list">
                 <li><strong>The Unconditioned Essence:</strong> Who you were before the world assigned you a role</li>
                 <li><strong>The Imperial Armor:</strong> The survival strategies you forged to protect your depth</li>
+                <li><strong>Elemental Resonance:</strong> Your elemental triplicity and celestial alignment</li>
                 <li><strong>The Point of Fracture:</strong> Where your vitality currently leaks—and how to reclaim it</li>
             </ul>
         </div>
@@ -467,9 +536,7 @@
         <div id="scenario-body" class="scenario-body">...</div>
         <div id="scenario-question" class="scenario-question">How does the mind instinctively move?</div>
 
-        <div id="choices-container" class="choices-container">
-            <!-- Choice buttons injected by JS -->
-        </div>
+        <div id="choices-container" class="choices-container"></div>
 
         <button id="btn-submit-choice" class="btn-primary" disabled onclick="confirmChoice()">CONFIRM CHOICE</button>
     </div>
@@ -480,10 +547,29 @@
         <button class="btn-primary" onclick="proceedAfterTransition()">CONTINUE THE JOURNEY</button>
     </div>
 
+    <!-- PROCESSING / RITUAL SCREEN -->
+    <div id="screen-processing" class="card processing-card hidden">
+        <div class="processing-sigil">
+            <div id="processing-symbol" class="processing-sigil-symbol">✦</div>
+        </div>
+        <div id="processing-status" class="processing-text">ALIGNING CELESTIAL SIGNATURE...</div>
+        <div id="processing-subtext" class="processing-subtext">Evaluating elemental triplicities and essence vectors</div>
+    </div>
+
     <!-- EXPANDED 5-CHAPTER MIRROR REFLECTION -->
     <div id="screen-mirror" class="card mirror-card hidden">
         <h1>THE SYNTHESIS OF THE MIRROR</h1>
         <div class="subtitle">A Map of Essence, Armor, and Reclaimed Sovereignty</div>
+        
+        <!-- CELESTIAL / ZODIAC RESONANCE BADGE -->
+        <div class="zodiac-badge">
+            <div id="zodiac-glyph" class="zodiac-glyph">♏︎</div>
+            <div class="zodiac-info">
+                <div id="zodiac-name" class="zodiac-name">RESONANT SIGN: SCORPIO</div>
+                <div id="zodiac-meta" class="zodiac-meta">Water Triplicity • Fixed Modality • The Alchemical Archetype</div>
+            </div>
+        </div>
+
         <div class="divider"></div>
 
         <div class="mirror-chapter">
@@ -503,7 +589,7 @@
         </div>
 
         <div class="mirror-chapter">
-            <h3>CHAPTER IV: THE RELATIONAL FIELD</h3>
+            <h3>CHAPTER IV: THE RELATIONAL FIELD & CELESTIAL ALIGNMENT</h3>
             <div id="chapter-4-body" class="mirror-chapter-body">...</div>
         </div>
 
@@ -545,9 +631,7 @@
     resizeCanvas();
 
     class Particle {
-        constructor() {
-            this.reset();
-        }
+        constructor() { this.reset(); }
         reset() {
             this.x = Math.random() * canvas.width;
             this.y = canvas.height + Math.random() * 100;
@@ -569,36 +653,29 @@
         }
     }
 
-    for (let i = 0; i < 45; i++) {
-        particles.push(new Particle());
-    }
+    for (let i = 0; i < 45; i++) { particles.push(new Particle()); }
 
     function animateParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-            p.update();
-            p.draw();
-        });
+        particles.forEach(p => { p.update(); p.draw(); });
         requestAnimationFrame(animateParticles);
     }
     animateParticles();
 
     // --- DYNAMIC PHASE BACKGROUND GRADIENTS ---
     const phaseGradients = {
-        0: 'radial-gradient(circle at 50% 30%, rgba(223, 177, 91, 0.08) 0%, transparent 70%)', // Phase I: Amber/Gold
-        1: 'radial-gradient(circle at 30% 70%, rgba(45, 70, 90, 0.15) 0%, transparent 70%)',   // Phase II: Deep Indigo/Steel
-        2: 'radial-gradient(circle at 70% 30%, rgba(80, 40, 60, 0.15) 0%, transparent 70%)',   // Phase III: Muted Crimson/Shadow
-        3: 'radial-gradient(circle at 50% 50%, rgba(223, 177, 91, 0.12) 0%, transparent 70%)'  // Phase IV: Luminous Gold
+        0: 'radial-gradient(circle at 50% 30%, rgba(223, 177, 91, 0.08) 0%, transparent 70%)',
+        1: 'radial-gradient(circle at 30% 70%, rgba(45, 70, 90, 0.15) 0%, transparent 70%)',
+        2: 'radial-gradient(circle at 70% 30%, rgba(80, 40, 60, 0.15) 0%, transparent 70%)',
+        3: 'radial-gradient(circle at 50% 50%, rgba(223, 177, 91, 0.12) 0%, transparent 70%)'
     };
 
     function updatePhaseBackground(phaseIndex) {
-        const overlay = document.getElementById('ambient-overlay');
-        overlay.style.background = phaseGradients[phaseIndex] || phaseGradients[0];
+        document.getElementById('ambient-overlay').style.background = phaseGradients[phaseIndex] || phaseGradients[0];
     }
 
-    // --- GAME DATA & TURNS ---
+    // --- GAME DATA WITH ELEMENTAL & MODALITY WEIGHTS ---
     const turns = [
-        // PHASE I
         {
             phaseIndex: 0,
             phase: "PHASE I: THE DISORIENTATION",
@@ -606,10 +683,10 @@
             body: "You stand at the bank of a swollen, swift river. Across it lies the land where your people need to gather, but there is no bridge. Beside you are three others who are equally stranded.\n\nOn the shore lie fallen timbers, heavy stones, and thick vines. Time is passing, and the current is rising...",
             question: "How does the mind instinctively move?",
             choices: [
-                { text: "You immediately assess the materials and step forward to delegate tasks. 'If we organize our labor efficiently, we can construct a timber crossing before nightfall.'", e: "BUILDER", a: "OVERSEER" },
-                { text: "You sit quietly by the water's edge, observing the pulse of the river and the timber. You wait for a shared understanding to emerge among the group before making a move.", e: "WEAVER", a: null },
-                { text: "You test the water alone, measuring your own weight against the current. If the others cannot keep up, you prepare to cross first and secure a rope from the far bank.", e: "WAYFINDER", a: "INSULATION" },
-                { text: "You look beyond the immediate crossing, studying the landscape upstream to see why the river has swollen so suddenly, seeking to understand the root cause.", e: "ALCHEMIST", a: null }
+                { text: "You immediately assess the materials and step forward to delegate tasks: 'If we organize our labor efficiently, we can construct a timber crossing before nightfall.'", e: "BUILDER", a: "OVERSEER", element: "EARTH", modality: "CARDINAL" },
+                { text: "You sit quietly by the water's edge, observing the pulse of the river and the timber, waiting for a shared understanding to emerge among the group before making a move.", e: "WEAVER", a: null, element: "WATER", modality: "MUTABLE" },
+                { text: "You test the water alone, measuring your own weight against the current. If the others cannot keep up, you prepare to cross first and secure a rope from the far bank.", e: "WAYFINDER", a: "INSULATION", element: "FIRE", modality: "CARDINAL" },
+                { text: "You look beyond the immediate crossing, studying the landscape upstream to see why the river has swollen so suddenly, seeking to understand the root cause.", e: "ALCHEMIST", a: null, element: "AIR", modality: "FIXED" }
             ]
         },
         {
@@ -619,10 +696,10 @@
             body: "You are brought into a sterile, high-walled chamber. Officials sit elevated above you, demanding a precise, quantifiable accounting of your path, your time, and your output.\n\nThey do not ask what you felt, what you dreamed, or who you nurtured... They ask only for proof of your utility to the collective apparatus.",
             question: "How does the internal armor react?",
             choices: [
-                { text: "You speak their language fluently, presenting your records with razor-sharp precision—using their own rules to excel and protect yourself from scrutiny.", e: null, a: "RATIONAL" },
-                { text: "A cold silence falls over you. You answer with minimal words, withholding your true essence, knowing that to give them your depth is to allow them to quantify it.", e: null, a: "EXILE" },
-                { text: "You feel an incandescent friction inside. You openly challenge the premise of their accounting, pointing out the absurdity and violence of reducing life to metrics.", e: "WAYFINDER", a: null },
-                { text: "You feel an overwhelming exhaustion—a subtle guilt that perhaps you haven't produced enough, wondering if you are failing to meet the standard expected of you.", e: null, a: "OVERSEER" }
+                { text: "You speak their language fluently, presenting your records with razor-sharp precision—using their own rules to excel and protect yourself from scrutiny.", e: null, a: "RATIONAL", element: "AIR", modality: "CARDINAL" },
+                { text: "A cold silence falls over you. You answer with minimal words, withholding your true essence, knowing that to give them your depth is to allow them to quantify it.", e: null, a: "EXILE", element: "WATER", modality: "FIXED" },
+                { text: "You feel an incandescent friction inside. You openly challenge the premise of their accounting, pointing out the absurdity and violence of reducing life to metrics.", e: "WAYFINDER", a: null, element: "FIRE", modality: "CARDINAL" },
+                { text: "You feel an overwhelming exhaustion—a subtle guilt that perhaps you haven't produced enough, wondering if you are failing to meet the standard expected of you.", e: null, a: "OVERSEER", element: "EARTH", modality: "MUTABLE" }
             ]
         },
         {
@@ -632,14 +709,13 @@
             body: "A shared harvest or resource has been brought into the village square. There is enough for everyone for the season, but rumors spread that the coming winter will be harsh and unpredictable.\n\nUncertainty hangs heavy in the air...",
             question: "What is the quiet whisper in the back of the mind?",
             choices: [
-                { text: "'I must secure my portion and my household's share immediately, storing it safely where it cannot be taken or wasted.'", e: null, a: "INSULATION" },
-                { text: "'We must establish a council right now to inventory, ration, and distribute this equally based on need, ensuring no single person hoards.'", e: "WEAVER", a: null },
-                { text: "'I will take less than my share and teach others how to forage and preserve in the wild so we are not reliant solely on what sits in this square.'", e: "WAYFINDER", a: null },
-                { text: "'I feel the anxiety of the crowd more than the threat of the winter. If we panic, we destroy ourselves long before the cold arrives.'", e: "WEAVER", a: null }
+                { text: "'I must secure my portion and my household's share immediately, storing it safely where it cannot be taken or wasted.'", e: null, a: "INSULATION", element: "EARTH", modality: "CARDINAL" },
+                { text: "'We must establish a council right now to inventory, ration, and distribute this equally based on need, ensuring no single person hoards.'", e: "WEAVER", a: null, element: "AIR", modality: "CARDINAL" },
+                { text: "'I will take less than my share and teach others how to forage and preserve in the wild so we are not reliant solely on what sits in this square.'", e: "WAYFINDER", a: null, element: "FIRE", modality: "MUTABLE" },
+                { text: "'I feel the anxiety of the crowd more than the threat of the winter. If we panic, we destroy ourselves long before the cold arrives.'", e: "WEAVER", a: null, element: "WATER", modality: "FIXED" }
             ],
             transitionAfter: "You have shown how you move in the open.\n\nNow, let us see how you adapted when the fences were built and the artificial clocks began to tick..."
         },
-        // PHASE II
         {
             phaseIndex: 1,
             phase: "PHASE II: THE IMPERIAL GRID",
@@ -647,10 +723,10 @@
             body: "You walk across a stretch of wild, ancient ground that has just been enclosed by wooden stakes and written notices. Someone has claimed exclusive ownership of the earth, the water, and the trees where everyone used to walk freely.",
             question: "As your feet touch the soil inside the boundary line, what does the mind register first?",
             choices: [
-                { text: "A flash of quiet anger... not just at the fence, but at the realization that we have been convinced we can own the very breath that sustains us.", e: "WEAVER", a: null },
-                { text: "An immediate mental calculation of what it will cost to buy or secure a piece of this earth for yourself, so you are never left vulnerable to someone else's gate.", e: null, a: "INSULATION" },
-                { text: "Curiosity about who drew the line and why. You want to trace the legal or systemic origins of this enclosure to see how the fiction was codified.", e: "ALCHEMIST", a: null },
-                { text: "A heavy sigh of resignation... feeling that this is simply how the world works now, and that resisting it is an exhausting, impossible battle.", e: null, a: "EXILE" }
+                { text: "A flash of quiet anger... not just at the fence, but at the realization that we have been convinced we can own the very breath that sustains us.", e: "WEAVER", a: null, element: "WATER", modality: "CARDINAL" },
+                { text: "An immediate mental calculation of what it will cost to buy or secure a piece of this earth for yourself, so you are never left vulnerable to someone else's gate.", e: null, a: "INSULATION", element: "EARTH", modality: "FIXED" },
+                { text: "Curiosity about who drew the line and why. You want to trace the legal or systemic origins of this enclosure to see how the fiction was codified.", e: "ALCHEMIST", a: null, element: "AIR", modality: "MUTABLE" },
+                { text: "A heavy sigh of resignation... feeling that this is simply how the world works now, and that resisting it is an exhausting, impossible battle.", e: null, a: "EXILE", element: "EARTH", modality: "MUTABLE" }
             ]
         },
         {
@@ -660,10 +736,10 @@
             body: "You are given an artificial schedule... divided into exact, unyielding blocks of minutes and hours. You are told that every moment must be accounted for, optimized, and traded for security. Outside the window, the sun moves, seasons shift, and the body speaks its own silent rhythm.",
             question: "How does your internal pulse respond to this rigid structure?",
             choices: [
-                { text: "You master the grid... turning your days into a precision instrument, taking pride in efficiency while feeling a quiet, underlying alienation from your body.", e: null, a: "RATIONAL" },
-                { text: "You suffer under its weight... constantly feeling behind, burdened by a chronic guilt that you are never doing enough, no matter how much energy you expend.", e: null, a: "OVERSEER" },
-                { text: "You quietly sabotage the schedule... maintaining an internal sanctuary where time remains fluid, doing only what is required to pass through unnoticed.", e: null, a: "EXILE" },
-                { text: "You reject the premises entirely... orienting your work around energy, relationship, and completion rather than arbitrary ticks on a dial.", e: "WEAVER", a: null }
+                { text: "You master the grid... turning your days into a precision instrument, taking pride in efficiency while feeling a quiet, underlying alienation from your body.", e: null, a: "RATIONAL", element: "EARTH", modality: "CARDINAL" },
+                { text: "You suffer under its weight... constantly feeling behind, burdened by a chronic guilt that you are never doing enough, no matter how much energy you expend.", e: null, a: "OVERSEER", element: "WATER", modality: "CARDINAL" },
+                { text: "You quietly sabotage the schedule... maintaining an internal sanctuary where time remains fluid, doing only what is required to pass through unnoticed.", e: null, a: "EXILE", element: "WATER", modality: "MUTABLE" },
+                { text: "You reject the premises entirely... orienting your work around energy, relationship, and completion rather than arbitrary ticks on a dial.", e: "WEAVER", a: null, element: "FIRE", modality: "MUTABLE" }
             ]
         },
         {
@@ -673,14 +749,13 @@
             body: "You are asked to explain a profound grief, a deep spiritual knowing, or a subtle shift in the community using only the cold, precise jargon of data, statistics, and economic efficiency.\n\nThe system demands proof that can be measured on paper...",
             question: "What happens inside when forced to translate the sacred into the measurable?",
             choices: [
-                { text: "You adapt effortlessly... translating the subtle into arguments the system cannot easily reject, using their own logic to protect what matters.", e: null, a: "RATIONAL" },
-                { text: "You refuse the dialect... speaking in metaphor, feeling, and bodily truth, accepting that the system will likely brand you as irrational or impractical.", e: "WAYFINDER", a: null },
-                { text: "You experience a profound numbness... feeling the inadequacy of words, slowly doubting whether your intuition was real in the first place if it cannot be proven.", e: null, a: "EXILE" },
-                { text: "You analyze the language itself... deconstructing how the terminology was designed to exclude human feeling and strip power from relational truth.", e: "ALCHEMIST", a: null }
+                { text: "You adapt effortlessly... translating the subtle into arguments the system cannot easily reject, using their own logic to protect what matters.", e: null, a: "RATIONAL", element: "AIR", modality: "CARDINAL" },
+                { text: "You refuse the dialect... speaking in metaphor, feeling, and bodily truth, accepting that the system will likely brand you as irrational or impractical.", e: "WAYFINDER", a: null, element: "FIRE", modality: "MUTABLE" },
+                { text: "You experience a profound numbness... feeling the inadequacy of words, slowly doubting whether your intuition was real in the first place if it cannot be proven.", e: null, a: "EXILE", element: "WATER", modality: "MUTABLE" },
+                { text: "You analyze the language itself... deconstructing how the terminology was designed to exclude human feeling and strip power from relational truth.", e: "ALCHEMIST", a: null, element: "AIR", modality: "FIXED" }
             ],
             transitionAfter: "We leave the grid behind.\n\nWe step into the quiet place where you carry your armor... and where your energy leaks."
         },
-        // PHASE III
         {
             phaseIndex: 2,
             phase: "PHASE III: THE SHADOW & THE ARMOR",
@@ -688,10 +763,10 @@
             body: "In a group you belong to, an uncomfortable truth becomes obvious... but pointing it out will disrupt the harmony, anger those in authority, and risk your standing. The group has chosen to blame an innocent outsider to maintain their own comfort.\n\nThe silence in the room grows heavy...",
             question: "What posture does your spirit assume?",
             choices: [
-                { text: "You step into the center of the room and name the lie directly, accepting whatever exile or backlash comes with breaking the illusion.", e: "WAYFINDER", a: null },
-                { text: "You stay quiet in the moment to assess the politics, then pull key individuals aside privately to dismantle the lie without causing a public explosion.", e: "ALCHEMIST", a: null },
-                { text: "You feel an intense physical discomfort, but you stay silent... choosing safety and group inclusion over the friction of speaking out.", e: null, a: "OVERSEER" },
-                { text: "You physically remove yourself from the group... refusing to participate in the charade, preferring solitude over corrupted belonging.", e: null, a: "INSULATION" }
+                { text: "You step into the center of the room and name the lie directly, accepting whatever exile or backlash comes with breaking the illusion.", e: "WAYFINDER", a: null, element: "FIRE", modality: "CARDINAL" },
+                { text: "You stay quiet in the moment to assess the politics, then pull key individuals aside privately to dismantle the lie without causing a public explosion.", e: "ALCHEMIST", a: null, element: "AIR", modality: "MUTABLE" },
+                { text: "You feel an intense physical discomfort, but you stay silent... choosing safety and group inclusion over the friction of speaking out.", e: null, a: "OVERSEER", element: "WATER", modality: "CARDINAL" },
+                { text: "You physically remove yourself from the group... refusing to participate in the charade, preferring solitude over corrupted belonging.", e: null, a: "INSULATION", element: "EARTH", modality: "FIXED" }
             ]
         },
         {
@@ -701,10 +776,10 @@
             body: "You stand before an old, ironbound chest left to you by those who came before. Inside lies both a burden—unspoken grief, survival fear, and old vows of silence—and an ancient, unpolished power that was forgotten.\n\nTo open the chest is to take ownership of both...",
             question: "How do you approach the inheritance?",
             choices: [
-                { text: "You open it wide, taking time to sort through every artifact—naming the wounds so they stop bleeding through you, and claiming the power as your birthright.", e: "ALCHEMIST", a: null },
-                { text: "You hesitate... feeling that the past should remain buried, afraid that looking too closely at old wounds will dismantle the stability you have worked so hard to build.", e: null, a: "EXILE" },
-                { text: "You take only the power and tools that seem useful for today, leaving the grief and heavy emotional memory untouched in the dark.", e: null, a: "RATIONAL" },
-                { text: "You feel overwhelmed by the weight of what was carried before you, suspecting that your life is largely a continuation of debts and stories you did not write.", e: null, a: "OVERSEER" }
+                { text: "You open it wide, taking time to sort through every artifact—naming the wounds so they stop bleeding through you, and claiming the power as your birthright.", e: "ALCHEMIST", a: null, element: "WATER", modality: "FIXED" },
+                { text: "You hesitate... feeling that the past should remain buried, afraid that looking too closely at old wounds will dismantle the stability you have worked so hard to build.", e: null, a: "EXILE", element: "EARTH", modality: "FIXED" },
+                { text: "You take only the power and tools that seem useful for today, leaving the grief and heavy emotional memory untouched in the dark.", e: null, a: "RATIONAL", element: "AIR", modality: "CARDINAL" },
+                { text: "You feel overwhelmed by the weight of what was carried before you, suspecting that your life is largely a continuation of debts and stories you did not write.", e: null, a: "OVERSEER", element: "WATER", modality: "MUTABLE" }
             ]
         },
         {
@@ -714,14 +789,13 @@
             body: "When the world becomes violent, chaotic, or overwhelming... when the demands of the modern grid exhaust your capacity to engage... where does the consciousness run to hide?",
             question: "What is your true sanctuary under pressure?",
             choices: [
-                { text: "The Mind: You retreat into intense analysis, research, and conceptualization... turning reality into a problem to be solved rather than felt.", e: null, a: "RATIONAL" },
-                { text: "The Fortress: You close the doors, isolate yourself entirely, and reduce your world to what you can personally control and predict.", e: null, a: "INSULATION" },
-                { text: "The Forge: You bury yourself in work, creation, and endless tasks... staying busy so the silence doesn't have a chance to speak.", e: null, a: "OVERSEER" },
-                { text: "The Flow: You seek communion with nature, music, or altered states... dissolving your sense of self so you no longer have to carry the weight of being a person.", e: "WAYFINDER", a: "EXILE" }
+                { text: "The Mind: You retreat into intense analysis, research, and conceptualization... turning reality into a problem to be solved rather than felt.", e: null, a: "RATIONAL", element: "AIR", modality: "FIXED" },
+                { text: "The Fortress: You close the doors, isolate yourself entirely, and reduce your world to what you can personally control and predict.", e: null, a: "INSULATION", element: "EARTH", modality: "CARDINAL" },
+                { text: "The Forge: You bury yourself in work, creation, and endless tasks... staying busy so the silence doesn't have a chance to speak.", e: null, a: "OVERSEER", element: "FIRE", modality: "FIXED" },
+                { text: "The Flow: You seek communion with nature, music, or altered states... dissolving your sense of self so you no longer have to carry the weight of being a person.", e: "WAYFINDER", a: "EXILE", element: "WATER", modality: "MUTABLE" }
             ],
             transitionAfter: "The armor has served its purpose. It kept you alive.\n\nNow... what remains when you stop holding up the shield?"
         },
-        // PHASE IV
         {
             phaseIndex: 3,
             phase: "PHASE IV: THE RECLAMATION",
@@ -729,10 +803,10 @@
             body: "You reach a moment where you must commit to a path, but all the external safety nets have been removed. There are no guarantees of success, no approval from authority, and no path back to who you were before.\n\nYou are standing in absolute stillness...",
             question: "What moves you forward into the dark?",
             choices: [
-                { text: "The quiet, internal conviction that remaining where you are is a slow death... you step into the dark simply because movement is life.", e: "WAYFINDER", a: null },
-                { text: "The thought of those who come after you... knowing that your willingness to step forward clears a path for others to follow.", e: "WEAVER", a: null },
-                { text: "You wait for a sign, a synchronicity, or a shift in the wind... trusting that the path will construct itself under your feet as you step.", e: "WEAVER", a: null },
-                { text: "You create a detailed contingency plan for the worst-case scenario, taking the step only when you know how you will survive if everything collapses.", e: "BUILDER", a: "RATIONAL" }
+                { text: "The quiet, internal conviction that remaining where you are is a slow death... you step into the dark simply because movement is life.", e: "WAYFINDER", a: null, element: "FIRE", modality: "CARDINAL" },
+                { text: "The thought of those who come after you... knowing that your willingness to step forward clears a path for others to follow.", e: "WEAVER", a: null, element: "WATER", modality: "CARDINAL" },
+                { text: "You wait for a sign, a synchronicity, or a shift in the wind... trusting that the path will construct itself under your feet as you step.", e: "WEAVER", a: null, element: "WATER", modality: "MUTABLE" },
+                { text: "You create a detailed contingency plan for the worst-case scenario, taking the step only when you know how you will survive if everything collapses.", e: "BUILDER", a: "RATIONAL", element: "EARTH", modality: "CARDINAL" }
             ]
         },
         {
@@ -742,10 +816,10 @@
             body: "You are offered immense personal success, wealth, or influence... but the terms are clear: you must continue to feed a system that extracts from the earth, exploits others, and requires you to keep wearing the mask.\n\nThe world tells you this is the ultimate goal...",
             question: "How does your inner spirit handle the offer?",
             choices: [
-                { text: "You accept the offer with the deliberate intention of acting as a trojan horse... taking the power and resources to quietly divert them to the margins.", e: "ALCHEMIST", a: null },
-                { text: "You refuse outright... recognizing that you cannot use the master's tools to dismantle the master's house, preferring simplicity over corrupted power.", e: "WAYFINDER", a: null },
-                { text: "You negotiate... trying to find a middle ground where you can accept the security while minimizing the harm you cause to your values.", e: null, a: "OVERSEER" },
-                { text: "You feel torn by the offer... realizing how much of your life has been shaped by the desire for security, making it painful to turn away from the prize.", e: null, a: "INSULATION" }
+                { text: "You accept the offer with the deliberate intention of acting as a trojan horse... taking the power and resources to quietly divert them to the margins.", e: "ALCHEMIST", a: null, element: "WATER", modality: "FIXED" },
+                { text: "You refuse outright... recognizing that you cannot use the master's tools to dismantle the master's house, preferring simplicity over corrupted power.", e: "WAYFINDER", a: null, element: "FIRE", modality: "MUTABLE" },
+                { text: "You negotiate... trying to find a middle ground where you can accept the security while minimizing the harm you cause to your values.", e: null, a: "OVERSEER", element: "AIR", modality: "CARDINAL" },
+                { text: "You feel torn by the offer... realizing how much of your life has been shaped by the desire for security, making it painful to turn away from the prize.", e: null, a: "INSULATION", element: "EARTH", modality: "FIXED" }
             ]
         },
         {
@@ -755,13 +829,37 @@
             body: "We reach the final turn. The scenarios dissolve. The river, the tribunal, the commons, and the clocks fade away.\n\nYou stand alone before a clear, dark mirror that reflects not your face, your name, or your history, but the raw, unconditioned impulse of your soul across time.",
             question: "When all the masks, armors, and survival strategies fall to the floor... what is left standing?",
             choices: [
-                { text: "A Fire that seeks to transform, burn away falsehood, and birth new forms out of the ashes.", e: "ALCHEMIST", a: null, weight: 2 },
-                { text: "A Thread that seeks to connect, weave community, restore harmony, and hold the collective together.", e: "WEAVER", a: null, weight: 2 },
-                { text: "A Stone that stands as a foundation, building lasting structures, holding sacred boundary, and offering shelter.", e: "BUILDER", a: null, weight: 2 },
-                { text: "A Wind that breaks boundaries, moves into the unknown, charts new horizons, and refuses to be contained.", e: "WAYFINDER", a: null, weight: 2 }
+                { text: "A Fire that seeks to transform, burn away falsehood, and birth new forms out of the ashes.", e: "ALCHEMIST", a: null, element: "FIRE", modality: "FIXED", weight: 2 },
+                { text: "A Thread that seeks to connect, weave community, restore harmony, and hold the collective together.", e: "WEAVER", a: null, element: "WATER", modality: "CARDINAL", weight: 2 },
+                { text: "A Stone that stands as a foundation, building lasting structures, holding sacred boundary, and offering shelter.", e: "BUILDER", a: null, element: "EARTH", modality: "FIXED", weight: 2 },
+                { text: "A Wind that breaks boundaries, moves into the unknown, charts new horizons, and refuses to be contained.", e: "WAYFINDER", a: null, element: "AIR", modality: "MUTABLE", weight: 2 }
             ]
         }
     ];
+
+    // --- ASTROLOGICAL ZODIAC DATABASE ---
+    const zodiacDatabase = {
+        FIRE: {
+            CARDINAL: { sign: "ARIES", glyph: "♈︎", title: "The Sovereign Spark", desc: "Fire Triplicity • Cardinal Modality • The Initiator Archetype" },
+            FIXED: { sign: "LEO", glyph: "♌︎", title: "The Radiant Hearth", desc: "Fire Triplicity • Fixed Modality • The Sacred Anvil" },
+            MUTABLE: { sign: "SAGITTARIUS", glyph: "♐︎", title: "The Wild Horizon", desc: "Fire Triplicity • Mutable Modality • The Arrow of Truth" }
+        },
+        EARTH: {
+            CARDINAL: { sign: "CAPRICORN", glyph: "♑︎", title: "The Mountain Sanctuary", desc: "Earth Triplicity • Cardinal Modality • The Structural Anchor" },
+            FIXED: { sign: "TAURUS", glyph: "♉︎", title: "The Unbroken Roots", desc: "Earth Triplicity • Fixed Modality • The Ground of Being" },
+            MUTABLE: { sign: "VIRGO", glyph: "♍︎", title: "The Sacred Weaver", desc: "Earth Triplicity • Mutable Modality • The Alchemical Refinery" }
+        },
+        AIR: {
+            CARDINAL: { sign: "LIBRA", glyph: "♎︎", title: "The Cosmic Scale", desc: "Air Triplicity • Cardinal Modality • The Relational Mirror" },
+            FIXED: { sign: "AQUARIUS", glyph: "♒︎", title: "The Star-Bearer", desc: "Air Triplicity • Fixed Modality • The System Deconstructor" },
+            MUTABLE: { sign: "GEMINI", glyph: "♊︎", title: "The Dual Prism", desc: "Air Triplicity • Mutable Modality • The Bridge of Dialects" }
+        },
+        WATER: {
+            CARDINAL: { sign: "CANCER", glyph: "♋︎", title: "The Tides of Protection", desc: "Water Triplicity • Cardinal Modality • The Vessel of Memory" },
+            FIXED: { sign: "SCORPIO", glyph: "♏︎", title: "The Depth Crucible", desc: "Water Triplicity • Fixed Modality • The Phoenix Engine" },
+            MUTABLE: { sign: "PISCES", glyph: "♓︎", title: "The Boundless Ocean", desc: "Water Triplicity • Mutable Modality • The Mystic Stream" }
+        }
+    };
 
     // --- STATE ENGINE ---
     let currentTurnIndex = 0;
@@ -769,19 +867,19 @@
     
     const eScores = { WEAVER: 0, ALCHEMIST: 0, BUILDER: 0, WAYFINDER: 0 };
     const aScores = { RATIONAL: 0, OVERSEER: 0, INSULATION: 0, EXILE: 0 };
+    const elementScores = { FIRE: 0, EARTH: 0, AIR: 0, WATER: 0 };
+    const modalityScores = { CARDINAL: 0, FIXED: 0, MUTABLE: 0 };
 
-    // --- DOM ELEMENTS ---
+    // DOM ELEMENTS
     const screenLanding = document.getElementById('screen-landing');
     const screenGame = document.getElementById('screen-game');
     const screenTransition = document.getElementById('screen-transition');
+    const screenProcessing = document.getElementById('screen-processing');
     const screenMirror = document.getElementById('screen-mirror');
     const btnSubmit = document.getElementById('btn-submit-choice');
 
-    // GA4 HOOK
     function trackEvent(eventName, eventParams = {}) {
-        if (typeof gtag === 'function') {
-            gtag('event', eventName, eventParams);
-        }
+        if (typeof gtag === 'function') { gtag('event', eventName, eventParams); }
     }
 
     function startGame() {
@@ -832,6 +930,8 @@
         const weight = choice.weight || 1;
         if (choice.e) eScores[choice.e] += weight;
         if (choice.a) aScores[choice.a] += weight;
+        if (choice.element) elementScores[choice.element] += weight;
+        if (choice.modality) modalityScores[choice.modality] += weight;
 
         const turn = turns[currentTurnIndex];
         trackEvent('turn_completed', { turn_number: currentTurnIndex + 1 });
@@ -860,37 +960,80 @@
             screenGame.classList.remove('hidden');
             renderTurn();
         } else {
-            renderMirror();
+            triggerProcessingRitual();
         }
     }
 
-    // --- EXPANDED 5-CHAPTER EVALUATION ENGINE ---
-    function renderMirror() {
+    // --- RITUAL PROCESSING DELAY ENGINE ---
+    function triggerProcessingRitual() {
         screenGame.classList.add('hidden');
         screenTransition.classList.add('hidden');
-        screenMirror.classList.remove('hidden');
-        updatePhaseBackground(3); // Golden luminous glow
+        screenProcessing.classList.remove('hidden');
+        updatePhaseBackground(3);
 
-        // Determine Highest Essence
+        const statusEl = document.getElementById('processing-status');
+        const subtextEl = document.getElementById('processing-subtext');
+        const symbolEl = document.getElementById('processing-symbol');
+
+        const steps = [
+            { main: "CALCULATING ESSENCE VECTORS...", sub: "Measuring core unconditioned resonance", symbol: "✦" },
+            { main: "MAPPING IMPERIAL ARMOR DYNAMICS...", sub: "Identifying historical survival structures", symbol: "🛡" },
+            { main: "ANALYZING ELEMENTAL TRIPLICITY...", sub: "Evaluating Fire, Earth, Air, and Water density", symbol: "🜂" },
+            { main: "UNVEILING CELESTIAL SIGNATURE...", sub: "Synthesizing modality and zodiac alignment", symbol: "♏︎" }
+        ];
+
+        let idx = 0;
+        const interval = setInterval(() => {
+            idx++;
+            if (idx < steps.length) {
+                statusEl.innerText = steps[idx].main;
+                subtextEl.innerText = steps[idx].sub;
+                symbolEl.innerText = steps[idx].symbol;
+            } else {
+                clearInterval(interval);
+                screenProcessing.classList.add('hidden');
+                renderMirror();
+            }
+        }, 1250); // 5 seconds total processing duration
+    }
+
+    // --- EXPANDED 5-CHAPTER MIRROR REFLECTION WITH CELESTIAL SYNTHESIS ---
+    function renderMirror() {
+        screenMirror.classList.remove('hidden');
+
+        // Highest Essence
         let primaryEssence = 'WEAVER';
         let maxE = -1;
-        for (let k in eScores) {
-            if (eScores[k] > maxE) { maxE = eScores[k]; primaryEssence = k; }
-        }
+        for (let k in eScores) { if (eScores[k] > maxE) { maxE = eScores[k]; primaryEssence = k; } }
 
-        // Determine Highest Armor
+        // Highest Armor
         let dominantArmor = 'RATIONAL';
         let maxA = -1;
-        for (let k in aScores) {
-            if (aScores[k] > maxA) { maxA = aScores[k]; dominantArmor = k; }
-        }
+        for (let k in aScores) { if (aScores[k] > maxA) { maxA = aScores[k]; dominantArmor = k; } }
+
+        // Highest Element & Modality
+        let resonantElement = 'WATER';
+        let maxElem = -1;
+        for (let k in elementScores) { if (elementScores[k] > maxElem) { maxElem = elementScores[k]; resonantElement = k; } }
+
+        let resonantModality = 'FIXED';
+        let maxMod = -1;
+        for (let k in modalityScores) { if (modalityScores[k] > maxMod) { maxMod = modalityScores[k]; resonantModality = k; } }
+
+        const zodiacData = zodiacDatabase[resonantElement][resonantModality];
+
+        // Populate Zodiac Badge
+        document.getElementById('zodiac-glyph').innerText = zodiacData.glyph;
+        document.getElementById('zodiac-name').innerText = `RESONANT SIGN: ${zodiacData.sign}`;
+        document.getElementById('zodiac-meta').innerText = `${zodiacData.title} • ${zodiacData.desc}`;
 
         trackEvent('mirror_synthesis_reached', {
             essence_archetype: primaryEssence,
-            armor_archetype: dominantArmor
+            armor_archetype: dominantArmor,
+            zodiac_sign: zodiacData.sign,
+            element: resonantElement
         });
 
-        // --- CHAPTER LIBRARIES ---
         const chapter1Texts = {
             WEAVER: "You do not experience reality as a collection of isolated objects to be owned, quantified, or managed... You experience it as an unbroken web of resonance.\n\nLeft unconditioned by hyper-individualist frameworks, your intelligence moves through relational coherence. Where others see separate people, disconnected events, or isolated problems, you instinctively sense the invisible threads connecting them. You notice when the harmony of a room shifts, when a truth is left unsaid, or when a collective system has lost its integrity. Your core gift is not efficiency or domination—it is the capacity to hold space, weave fractured elements back together, and feel the living pulse of the whole.",
             ALCHEMIST: "Your mind refuses to sit on the surface of things... It naturally dives into the root conditions, power dynamics, and hidden mechanics beneath the surface.\n\nYour unconditioned nature demands structural truth. You possess an instinctual immunity to cheap narratives, surface-level fixes, and institutional theater. Where others accept rules simply because they are written, you see how the rule was constructed, who it serves, and why it was built. Your core frequency is transformative fire—the capacity to burn away illusion, deconstruct extraction, and midwife new forms out of the ashes of stagnant paradigms.",
@@ -932,7 +1075,7 @@
             }
         };
 
-        const chapter4Text = "• On Power & Authority: You do not respect power derived purely from titles, institutional hierarchy, or financial leverage. Your spirit recognizes only legitimate authority—that which is rooted in grounded character, relational integrity, and true service to life.\n\n• On Community: You do not seek shallow networking or artificial social harmony. You long for relational density—small, resilient circles where people can speak without masks, share burdens without transaction, and stand together against systemic pressure.\n\n• On the Living World: You do not view the Earth as a background or a resource stack. Your body senses the land as a living participant... understanding that human healing is inseparable from restoring our relationship with the water, the soil, and the non-human world.";
+        const chapter4CelestialText = `• On Celestial Triplicity (${resonantElement}): Your choices reveal a deep alignment with the ${resonantElement} Triplicity. This element governs how your vitality circulates when freed from artificial constraints. Inside the current grid, this elemental frequency is often penalized or harvested; inside the mirror, it is your primary engine of reclamation.\n\n• On Power & Authority: You do not respect power derived purely from titles, institutional hierarchy, or financial leverage. Your spirit recognizes only legitimate authority—that which is rooted in grounded character, relational integrity, and true service to life.\n\n• On Community: You do not seek shallow networking or artificial social harmony. You long for relational density—small, resilient circles where people can speak without masks, share burdens without transaction, and stand together against systemic pressure.\n\n• On the Living World: You do not view the Earth as a background or a resource stack. Your body senses the land as a living participant... understanding that human healing is inseparable from restoring our relationship with the water, the soil, and the non-human world.`;
 
         const chapter5Texts = {
             WEAVER: "1. Shift from 'holding everyone' to 'building reciprocal containers.' You are not required to be the sole anchor for every space you enter.\n2. Reclaim trust in non-verbal, relational intelligence without asking for logical permission or external verification.\n3. Recognize that setting clear, firm boundaries is an act of love and integrity, not abandonment.",
@@ -947,7 +1090,7 @@
         document.getElementById('chapter-2-body').innerText = chapter2Texts[dominantArmor];
         document.getElementById('eval-friction-box').innerText = `Friction Point: ${frictionInfo.title}`;
         document.getElementById('chapter-3-body').innerText = frictionInfo.text;
-        document.getElementById('chapter-4-body').innerText = chapter4Text;
+        document.getElementById('chapter-4-body').innerText = chapter4CelestialText;
         document.getElementById('chapter-5-body').innerText = chapter5Texts[primaryEssence];
     }
 </script>
